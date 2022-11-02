@@ -7,4 +7,4 @@
 - Extraire les données simulés pour ensuite créer un modèle de machine learning qui apprend à prévoir le déplacement selon les paramètres de base.
 
 ## Création de l'application
-La documentation de l'application est disponible [ici](/application).
+La documentation de l'application est disponible [ici](/Application).
