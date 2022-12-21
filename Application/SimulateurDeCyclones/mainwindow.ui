@@ -29,235 +29,307 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>801</width>
-      <height>571</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetMaximumSize</enum>
-     </property>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetMaximumSize</enum>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>7</number>
-         </property>
-         <property name="sizeConstraint">
-          <enum>QLayout::SetDefaultConstraint</enum>
-         </property>
-         <item>
-          <widget class="QPushButton" name="pushBLancerSimu">
-           <property name="text">
-            <string>Lancer la simulation</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushBStopSimu">
-           <property name="text">
-            <string>Stopper la simulation</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="settings1">
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="text">
-            <string>°C</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="SBTemps">
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="minimum">
-            <number>-20</number>
-           </property>
-           <property name="maximum">
-            <number>50</number>
-           </property>
-           <property name="value">
-            <number>20</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="settings2">
-         <item>
-          <widget class="QLabel" name="label_2">
-           <property name="text">
-            <string>Humidité</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="spinBox"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="settings3">
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>Vitesse du vent (km/h)</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="spinBox_2"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="settings4">
-         <item>
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>Direction du vent °</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="spinBox_3">
-           <property name="maximum">
-            <number>360</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>Type de simulation</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox">
-           <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetNoConstraint</enum>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>7</number>
+          </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <widget class="QPushButton" name="pushBLancerSimu">
             <property name="text">
-             <string>type1</string>
+             <string>Lancer la simulation</string>
             </property>
-           </item>
-           <item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushBStopSimu">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
-             <string>type2</string>
+             <string>Stopper la simulation</string>
             </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QTableWidget" name="tableWidget">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <column>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="settings1">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
             <property name="text">
-             <string>Nom</string>
+             <string>°C</string>
             </property>
-           </column>
-           <column>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="SBTemps">
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="minimum">
+             <number>-20</number>
+            </property>
+            <property name="maximum">
+             <number>50</number>
+            </property>
+            <property name="value">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="settings2">
+          <item>
+           <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>position x</string>
+             <string>Humidité</string>
             </property>
-           </column>
-           <column>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="settings3">
+          <item>
+           <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>position y</string>
+             <string>Vitesse du vent (km/h)</string>
             </property>
-           </column>
-           <column>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_2"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="settings4">
+          <item>
+           <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Couleur</string>
+             <string>Direction du vent °</string>
             </property>
-           </column>
-           <column>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_3">
+            <property name="maximum">
+             <number>360</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>Supprimer</string>
+             <string>Type de simulation</string>
             </property>
-           </column>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <property name="sizeConstraint">
-            <enum>QLayout::SetDefaultConstraint</enum>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QPushButton" name="pushBAjoutCyclone">
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox">
+            <item>
              <property name="text">
-              <string>Ajouter</string>
+              <string>type1</string>
              </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushBSupprCyclone">
+            </item>
+            <item>
              <property name="text">
-              <string>Supprimer cyclones sélectionnés</string>
+              <string>type2</string>
              </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="mapConteneur">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetNoConstraint</enum>
-       </property>
-      </layout>
-     </item>
-    </layout>
-   </widget>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QTableWidget" name="tableWidget">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>402</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarAsNeeded</enum>
+            </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarAlwaysOff</enum>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+            </property>
+            <property name="dragEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="textElideMode">
+             <enum>Qt::ElideMiddle</enum>
+            </property>
+            <property name="gridStyle">
+             <enum>Qt::SolidLine</enum>
+            </property>
+            <attribute name="horizontalHeaderVisible">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="horizontalHeaderDefaultSectionSize">
+             <number>80</number>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Nom</string>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>position x</string>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>position y</string>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Taille</string>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Supprimer</string>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="pushBAjoutCyclone">
+              <property name="text">
+               <string>Ajouter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushBSupprCyclone">
+              <property name="text">
+               <string>Supprimer cyclones sélectionnés</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="mapConteneur">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

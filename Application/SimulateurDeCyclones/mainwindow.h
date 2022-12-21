@@ -28,7 +28,6 @@ public slots:
 private:
     Ui::MainWindow *ui;
     Map *map;
-    QList<Cyclone*> listeCyclone;
     int nbLigneCyclone;
 };
 #endif // MAINWINDOW_H

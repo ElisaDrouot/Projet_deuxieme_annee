@@ -20,8 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
     this->map=new Map;
     nbLigneCyclone=0;
 
+    QSizePolicy policy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    map->setSizePolicy(policy);
     ajouterCyclone();
-
     ui->mapConteneur->addWidget(map);
     connect(ui->pushBAjoutCyclone,SIGNAL(clicked(bool)),SLOT(ajouterCyclone()));
     connect(ui->pushBSupprCyclone,SIGNAL(clicked(bool)),SLOT(supprimerCyclone()));
@@ -31,13 +32,13 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::ajouterCyclone(){
     QTableWidget* tab=ui->tableWidget;
 
-    listeCyclone.append(new Cyclone);
+    map->ajoutCyclone();
 
     tab->insertRow(nbLigneCyclone);
     tab->setItem(nbLigneCyclone,0,new QTableWidgetItem("Cyclone" + QString::number(nbLigneCyclone + 1)));
     tab->setItem(nbLigneCyclone,1,new QTableWidgetItem("120"));
     tab->setItem(nbLigneCyclone,2,new QTableWidgetItem("150"));
-    tab->setItem(nbLigneCyclone,3,new QTableWidgetItem("BLEU"));
+    tab->setItem(nbLigneCyclone,3,new QTableWidgetItem("100"));
     QTableWidgetItem* checkBoxItem=new QTableWidgetItem();
     checkBoxItem->setCheckState(Qt::Unchecked);
     tab->setItem(nbLigneCyclone,4,checkBoxItem);
@@ -49,7 +50,7 @@ void MainWindow::supprimerCyclone(){
     for(int i=0;i<nbLigneCyclone;i++){
         if(ui->tableWidget->item(i,4)->checkState() == Qt::Checked){
             ui->tableWidget->removeRow(i);
-            listeCyclone.removeAt(i);
+            this->map->supprimerCyclone(i);
             i--;
             nbLigneCyclone--;
         }
@@ -60,21 +61,22 @@ void MainWindow::updateCyclone(int r, int c){
     switch ( c )
     {
     case 0:
-        listeCyclone.at(r)->setNom(ui->tableWidget->item(r,c)->text());
+        map->getCyclone(r)->setNom(ui->tableWidget->item(r,c)->text());
         break;
     case 1:
-        listeCyclone.at(r)->setPosX(ui->tableWidget->item(r,c)->text().toInt());
+        map->getCyclone(r)->setPosX(ui->tableWidget->item(r,c)->text().toInt());
         break;
     case 2:
-        listeCyclone.at(r)->setPosY(ui->tableWidget->item(r,c)->text().toInt());
+        map->getCyclone(r)->setPosY(ui->tableWidget->item(r,c)->text().toInt());
         break;
     case 3:
-        listeCyclone.at(r)->setTaille(ui->tableWidget->item(r,c)->text().toInt());
+        map->getCyclone(r)->setTaille(ui->tableWidget->item(r,c)->text().toInt());
         break;
     /*case 4:
-        listeCyclone.at(r)->setCouleur(ui->tableWidget->item(r,c)->text().toInt());
+        map->getCyclone(r)->setCouleur(ui->tableWidget->item(r,c)->text().toInt());
         break;*/
     }
+    map->repaint();
 
 }
 

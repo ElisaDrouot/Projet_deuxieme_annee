@@ -5,6 +5,8 @@
 #include <QPixmap>
 #include <QWidget>
 
+#include "cyclone.h"
+
 
 class Map : public QWidget
 {
@@ -15,6 +17,9 @@ public:
 
     QSize minimumSizeHint() const override;
     QSize sizeHint() const override;
+    Cyclone* getCyclone(int indice);
+    void ajoutCyclone();
+    void supprimerCyclone(int indice);
 
 public slots:
 
@@ -26,5 +31,7 @@ private:
     QBrush brush;
     QPixmap pixBackground;
     QPixmap pixCyclone;
+    QList<Cyclone*> listeCyclone;
+
 };
 #endif // MAP_H
