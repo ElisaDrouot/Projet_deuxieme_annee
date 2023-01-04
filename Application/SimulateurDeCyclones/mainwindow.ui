@@ -86,7 +86,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="SBTemps">
+           <widget class="QSpinBox" name="SBTemperature">
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
@@ -116,7 +116,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox"/>
+           <widget class="QSpinBox" name="SBhumidite"/>
           </item>
          </layout>
         </item>
@@ -133,7 +133,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_2"/>
+           <widget class="QSpinBox" name="SBvitesseVent"/>
           </item>
          </layout>
         </item>
@@ -150,7 +150,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox_3">
+           <widget class="QSpinBox" name="SBdirectionVent">
             <property name="maximum">
              <number>360</number>
             </property>

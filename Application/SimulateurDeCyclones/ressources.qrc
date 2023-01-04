@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/images">
         <file>ressources/cyclone.png</file>
+        <file>ressources/arrow.png</file>
     </qresource>
 </RCC>

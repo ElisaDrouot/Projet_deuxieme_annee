@@ -6,7 +6,7 @@
 #include <QCheckBox>
 
 #include "map.h"
-#include "cyclone.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,6 +24,12 @@ public slots:
     void ajouterCyclone();
     void supprimerCyclone();
     void updateCyclone(int x, int y);
+    void updateTableWidgetCyclones(int index,Cyclone* cyclone);
+
+signals:
+    void sigUpdatePos(int, int, int);
+
+    void sigUpdateTaille(int ,int);
 
 private:
     Ui::MainWindow *ui;

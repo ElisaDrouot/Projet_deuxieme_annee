@@ -24,8 +24,15 @@ MainWindow::MainWindow(QWidget *parent)
     map->setSizePolicy(policy);
     ajouterCyclone();
     ui->mapConteneur->addWidget(map);
+
+    connect(this,SIGNAL(sigUpdatePos(int,int,int)),map,SLOT(updatePos(int,int,int)));
+    connect(this,SIGNAL(sigUpdateTaille(int,int)),map,SLOT(updateTaille(int,int)));
+
+
+    connect(map,SIGNAL(cycloneDeplace(int,Cyclone*)),SLOT(updateTableWidgetCyclones(int,Cyclone*)));
     connect(ui->pushBAjoutCyclone,SIGNAL(clicked(bool)),SLOT(ajouterCyclone()));
     connect(ui->pushBSupprCyclone,SIGNAL(clicked(bool)),SLOT(supprimerCyclone()));
+    connect(ui->SBdirectionVent,SIGNAL(valueChanged(int)),map,SLOT(updateArrow(int)));
 }
 
 //Ajoute un cyclone à la fin du tableau des cyclones
@@ -57,6 +64,7 @@ void MainWindow::supprimerCyclone(){
     }
 }
 
+//Permet de mettre à jour les positions de départ des cyclones
 void MainWindow::updateCyclone(int r, int c){
     switch ( c )
     {
@@ -65,12 +73,15 @@ void MainWindow::updateCyclone(int r, int c){
         break;
     case 1:
         map->getCyclone(r)->setPosX(ui->tableWidget->item(r,c)->text().toInt());
+        emit sigUpdatePos(r,map->getCyclone(r)->getPosX(),map->getCyclone(r)->getPosY());
         break;
     case 2:
         map->getCyclone(r)->setPosY(ui->tableWidget->item(r,c)->text().toInt());
+        emit sigUpdatePos(r,map->getCyclone(r)->getPosX(),map->getCyclone(r)->getPosY());
         break;
     case 3:
         map->getCyclone(r)->setTaille(ui->tableWidget->item(r,c)->text().toInt());
+        emit sigUpdateTaille(r,map->getCyclone(r)->getTaille());
         break;
     /*case 4:
         map->getCyclone(r)->setCouleur(ui->tableWidget->item(r,c)->text().toInt());
@@ -79,6 +90,17 @@ void MainWindow::updateCyclone(int r, int c){
     map->repaint();
 
 }
+
+void MainWindow::updateTableWidgetCyclones(int index,Cyclone* cyclone){
+    QTableWidget* tab=ui->tableWidget;
+
+    tab->setItem(index,0,new QTableWidgetItem(cyclone->getNom()));
+    tab->setItem(index,1,new QTableWidgetItem(QString::number(cyclone->getPosX())));
+    tab->setItem(index,2,new QTableWidgetItem(QString::number(cyclone->getPosY())));
+    tab->setItem(index,3,new QTableWidgetItem(QString::number(cyclone->getTaille())));
+}
+
+
 
 MainWindow::~MainWindow()
 {
