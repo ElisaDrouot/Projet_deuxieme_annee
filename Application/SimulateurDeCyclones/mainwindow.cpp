@@ -25,6 +25,12 @@ MainWindow::MainWindow(QWidget *parent)
     ajouterCyclone();
     ui->mapConteneur->addWidget(map);
 
+    cheminFichier = "/data.csv";
+
+
+    ui->lNomFichier->setText(baseFichier + cheminFichier );
+
+    //connexion onglet graphique
     connect(this,SIGNAL(sigUpdatePos(int,int,int)),map,SLOT(updatePos(int,int,int)));
     connect(this,SIGNAL(sigUpdateTaille(int,int)),map,SLOT(updateTaille(int,int)));
 
@@ -33,6 +39,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushBAjoutCyclone,SIGNAL(clicked(bool)),SLOT(ajouterCyclone()));
     connect(ui->pushBSupprCyclone,SIGNAL(clicked(bool)),SLOT(supprimerCyclone()));
     connect(ui->SBdirectionVent,SIGNAL(valueChanged(int)),map,SLOT(updateArrow(int)));
+
+    //connexion onglet multiple
+    connect(ui->btnImportationFic,SIGNAL(clicked(bool)),SLOT(choixCheminFic()));
+    connect(ui->nomFichier,SIGNAL(textEdited(QString)),SLOT(updateCheminFic()));
 }
 
 //Ajoute un cyclone à la fin du tableau des cyclones
@@ -100,6 +110,21 @@ void MainWindow::updateTableWidgetCyclones(int index,Cyclone* cyclone){
     tab->setItem(index,3,new QTableWidgetItem(QString::number(cyclone->getTaille())));
 }
 
+void MainWindow::choixCheminFic(){
+    cheminFichier = QFileDialog::getOpenFileName(this, tr("Open File"),"/home",tr("Images (*.csv)"));
+    ui->lNomFichier->setText(baseFichier + cheminFichier);
+    ui->nomFichier->setText(cheminFichier);
+}
+
+void MainWindow::updateCheminFic(){
+    if(ui->nomFichier->text().endsWith(".csv")){
+        cheminFichier=ui->nomFichier->text();
+        ui->lNomFichier->setText(baseFichier + cheminFichier);
+    }
+    else{
+        ui->nomFichier->setText(cheminFichier);
+    }
+}
 
 
 MainWindow::~MainWindow()
