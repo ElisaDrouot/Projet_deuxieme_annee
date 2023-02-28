@@ -9,12 +9,18 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Construction.cpp \
+    Matrice.cpp \
+    Position.cpp \
     cyclone.cpp \
     main.cpp \
     mainwindow.cpp \
     map.cpp
 
 HEADERS += \
+    Construction.hpp \
+    Matrice.hpp \
+    Position.hpp \
     cyclone.h \
     mainwindow.h \
     map.h
@@ -27,7 +33,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    ressources/atlantic.csv
 
 RESOURCES += \
     ressources.qrc

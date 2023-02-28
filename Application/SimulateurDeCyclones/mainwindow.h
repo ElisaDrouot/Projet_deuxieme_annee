@@ -27,6 +27,16 @@ public slots:
     void updateTableWidgetCyclones(int index,Cyclone* cyclone);
     void choixCheminFic();//clic sur bouton du choix du chemin du fichier
     void updateCheminFic();//Changement via modification de l'EditText
+    void etapeCyclone();
+    void simuler();
+    void remiseAZero();
+
+    void setVitesse(int vites);
+    void setPression(int press);
+    void setTemperature(int temp);
+
+    float rayon(int position, int iter);
+
 
 signals:
     void sigUpdatePos(int, int, int);
@@ -38,7 +48,11 @@ private:
     Map *map;
     int nbLigneCyclone;
     QString cheminFichier;
+    bool enSimulation;
     const QString baseFichier="Chemin du fichier: ";
+    float vitesse;
+    float pression;
+    float temperature;
 
 };
 #endif // MAINWINDOW_H

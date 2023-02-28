@@ -26,12 +26,12 @@ Map::Map(QWidget * /*parent*/)
 
 QSize Map::minimumSizeHint() const
 {
-    return QSize(100, 100);
+    return QSize(1100, 600);
 }
 
 QSize Map::sizeHint() const
 {
-    return QSize(400, 200);
+    return QSize(1100, 600);
 }
 
 void Map::paintEvent(QPaintEvent * /* event */)
@@ -43,12 +43,28 @@ void Map::paintEvent(QPaintEvent * /* event */)
         taille=listeCyclone.at(i)->getTaille();
         painter.drawPixmap(listeCyclone.at(i)->getPosX(),listeCyclone.at(i)->getPosY(),taille,taille,pixCyclone);
     }*/
+    int a,b,c,d;
+    Position p;
 
 
     //contours
     painter.setPen(palette().dark().color());
     painter.setBrush(Qt::NoBrush);
+
     painter.drawRect(QRect(0, 1, width() - 1, height() - 1));
+
+    for(int i=0; i<listeCyclone.size();i++){
+        if(listeCyclone.at(i)->listePosition.size() > 1){
+            for(int j=1; j<listeCyclone.at(i)->listePosition.size();j++){
+                a=p.getLatitude(listeCyclone.at(i)->listePosition.at(j-1));
+                b=p.getLongitude(listeCyclone.at(i)->listePosition.at(j-1));
+                c=p.getLatitude(listeCyclone.at(i)->listePosition.at(j));
+                d=p.getLongitude(listeCyclone.at(i)->listePosition.at(j));
+                int taillePix=listeImageCyclone.at(i)->pixmap().height()/2;
+                painter.drawLine(QLine(a+taillePix,b+taillePix,c+taillePix,d+taillePix));
+            }
+        }
+    }
 }
 
 Cyclone* Map::getCyclone(int indice){
@@ -56,11 +72,13 @@ Cyclone* Map::getCyclone(int indice){
 }
 
 void Map::ajoutCyclone(){
+
     Cyclone* cyclone=new Cyclone;
     listeCyclone.append(cyclone);
 
+
     QLabel *label = new QLabel(this);
-    label->setPixmap(pixCyclone.scaled(cyclone->getPosX(), cyclone->getPosY()));
+    label->setPixmap(pixCyclone.scaled(cyclone->getTaille(), cyclone->getTaille()));
     label->move(cyclone->getPosX(), cyclone->getPosY());
     label->resize(cyclone->getTaille(),cyclone->getTaille());
 
@@ -80,7 +98,14 @@ void Map::supprimerCyclone(int indice){
 }
 
 void Map::updatePos(int index, int x, int y){
-    listeImageCyclone.at(index)->move(x,y);
+    if(!listeCyclone.at(index)->IsDead()){
+        listeImageCyclone.at(index)->move(x,y);
+        repaint();
+
+    }
+    else{
+        listeImageCyclone.at(index)->hide();
+    }
 }
 
 void Map::updateTaille(int index, int taille){
@@ -208,3 +233,5 @@ void Map::mousePressEvent(QMouseEvent *event)
         child->close();
     }
 }
+
+
