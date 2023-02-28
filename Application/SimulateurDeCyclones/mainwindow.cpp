@@ -133,7 +133,7 @@ void MainWindow::updateTableWidgetCyclones(int index,Cyclone* cyclone){
     tab->setItem(index,0,new QTableWidgetItem(cyclone->getNom()));
     tab->setItem(index,1,new QTableWidgetItem(QString::number(cyclone->getPosX())));
     tab->setItem(index,2,new QTableWidgetItem(QString::number(cyclone->getPosY())));
-    tab->setItem(index,3,new QTableWidgetItem(QString::number(cyclone->getTaille())));
+    tab->setItem(index,3,new QTableWidgetItem(QString::number(cyclone->getPosition())));
 }
 
 void MainWindow::choixCheminFic(){

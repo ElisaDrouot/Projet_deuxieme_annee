@@ -161,14 +161,31 @@ void Map::dropEvent(QDropEvent *event)
 
         QLabel *newIcon = new QLabel(this);
         newIcon->setPixmap(pixmap.scaled(listeCyclone.at(labelActuel)->getTaille(),listeCyclone.at(labelActuel)->getTaille()));
-        newIcon->move(event->position().toPoint() - offset);
+
+        //calcul de la nouvelle position (entre 0 et 264)
+        QPoint pointActuel=event->position().toPoint();
+        while(pointActuel.x()%30 != 0){pointActuel.setX(pointActuel.x()-1);}
+        while(pointActuel.y()%30 != 0){pointActuel.setY(pointActuel.y()-1);}
+        int positionActuelle=0;
+
+        positionActuelle = 22- (pointActuel.x()/30) ;
+        positionActuelle += 11*22- 22* (pointActuel.y()/30);
+
+
+        listeCyclone.at(labelActuel)->setPosition(positionActuelle);
+
+
+        newIcon->move(pointActuel);//event->position().toPoint() - offset);
         newIcon->show();
         newIcon->setAttribute(Qt::WA_DeleteOnClose);
 
 
         listeImageCyclone.replace(labelActuel,newIcon);
-        listeCyclone.at(labelActuel)->setPosX(event->position().x()-offset.x());
-        listeCyclone.at(labelActuel)->setPosY(event->position().y()-offset.y());
+
+
+        //listeCyclone.at(labelActuel)->setPosX(pointActuel.x());//event->position().x()-offset.x());
+        //listeCyclone.at(labelActuel)->setPosY(pointActuel.y());//event->position().y()-offset.y());
+
         emit cycloneDeplace(labelActuel,listeCyclone.at(labelActuel));
 
 
