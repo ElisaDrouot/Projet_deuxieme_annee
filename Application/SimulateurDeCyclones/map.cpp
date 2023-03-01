@@ -37,7 +37,6 @@ QSize Map::sizeHint() const
 void Map::paintEvent(QPaintEvent * /* event */)
 {
     QPainter painter(this);
-
 /*
     for(int i=0;i<listeCyclone.size();i++){
         taille=listeCyclone.at(i)->getTaille();
@@ -48,7 +47,7 @@ void Map::paintEvent(QPaintEvent * /* event */)
 
 
     //contours
-    painter.setPen(palette().dark().color());
+    painter.setPen(QPen(Qt::white, 3));//palette().dark().color());
     painter.setBrush(Qt::NoBrush);
 
     painter.drawRect(QRect(0, 1, width() - 1, height() - 1));

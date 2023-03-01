@@ -6,8 +6,7 @@ Cyclone::Cyclone()
     taille=30;
     dead=false;
     Position p;
-    //positionActuelle=85;
-    positionActuelle=35;
+    positionActuelle=85;
     positionAncienne=0;
     posX=p.getLatitude(positionActuelle);
     posY=p.getLongitude(positionActuelle);

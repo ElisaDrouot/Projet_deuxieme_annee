@@ -3,4 +3,7 @@
         <file>ressources/cyclone.png</file>
         <file>ressources/arrow.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>ressources/map1.png</file>
+    </qresource>
 </RCC>

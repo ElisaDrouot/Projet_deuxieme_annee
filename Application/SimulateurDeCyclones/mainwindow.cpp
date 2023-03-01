@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->map=new Map;
     nbLigneCyclone=0;
 
+    map->setStyleSheet("background-image: url(:/ressources/map1.png)");
+
     QSizePolicy policy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     map->setSizePolicy(policy);
     ajouterCyclone();
@@ -91,6 +93,7 @@ void MainWindow::supprimerCyclone(){
     for(int i=0;i<nbLigneCyclone;i++){
         if(ui->tableWidget->item(i,4)->checkState() == Qt::Checked){
             ui->tableWidget->removeRow(i);
+
             this->map->supprimerCyclone(i);
             i--;
             nbLigneCyclone--;
@@ -158,8 +161,8 @@ void MainWindow::etapeCyclone(){
         /*int newTaille=rayon(map->getCyclone(i)->getPosition(),map->getCyclone(i)->listePosition.count()-1);
         map->getCyclone(i)->setTaille(newTaille);
 
-        emit sigUpdateTaille(i,newTaille);
-        */
+        emit sigUpdateTaille(i,newTaille);*/
+
         emit sigUpdatePos(i,map->getCyclone(i)->getPosX(),map->getCyclone(i)->getPosY());
     }
 }
