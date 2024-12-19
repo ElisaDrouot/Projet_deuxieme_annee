@@ -1,5 +1,4 @@
 # Simulateur de cyclone
-# Elisa DROUOT et Ivan LE TEUFF
 
 ## Objectifs
 - Créer une application graphique permettant de choisir les paramètres physiques et de lancer une simulation.
@@ -8,3 +7,7 @@
 
 ## Création de l'application
 La documentation de l'application est disponible [ici](/Application).
+
+## Contributeurs
+- **Elisa DROUOT** 
+- **Ivan LE TEUFF**
